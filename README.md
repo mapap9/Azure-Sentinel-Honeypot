@@ -9,11 +9,11 @@ Project consists of a walkthrough for a honeypot deployed on Azure with Sentinel
 
 - <b>Sentinel</b> 
 - <b>KQL</b> 
-- <b>Azure</b>
 
 <h2>Environments Used </h2>
 
 - <b>Windows 10</b> (22H2)
+- <b>Microsoft Azure</b> (22H2)
 
 <h2>Walk-through:</h2>
 
