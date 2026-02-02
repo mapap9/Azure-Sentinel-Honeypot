@@ -1,4 +1,4 @@
-<h1>Azure Honeypot</h1>
+<h1>Azure Sentinel Honeypot</h1>
 
 <h2>Description</h2>
 Project consists of a walkthrough for a honeypot deployed on Azure with Sentinel and Log Analytics.
