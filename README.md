@@ -98,7 +98,7 @@ Project consists of a walkthrough for a honeypot deployed on Azure with Sentinel
 <img src="images/29.png" height="80%" width="80%" alt=""/>
 <img src="images/30.png" height="80%" width="80%" alt=""/>
 <br />
-<b>Start with basic KQL queries. Initial results show routine activity with no clear signs of compromise. However, after about five minutes—while creating the watchlist—suspicious activity began appearing, indicating probing attempts.   </b>
+<b>Start with basic KQL queries such as "SecurityEvents". Initial results show routine activity with no clear signs of compromise. However, after about five minutes—while creating the watchlist—suspicious activity began appearing, indicating probing attempts.   </b>
 <br />
 <br />
 
@@ -128,6 +128,20 @@ Project consists of a walkthrough for a honeypot deployed on Azure with Sentinel
 <img src="images/46.png" height="80%" width="80%" alt=""/>
 <br />
 <b>Create a threat map using Workbooks that references the watchlist you imported (network/location data). Build an interactive map showing attacking locations and relevant metrics, save the workbook, and revisit the underlying query anytime. For example, you might see large volumes—e.g., 22,000 events from a single IP range (And this was only within 4 hours!) —with location mismatches (Argentina vs. some connections from Ukraine), suggesting proxying or botnet activity.   </b>
+<br />
+<br />
+<b>Here we can input queries such as: 
+"let GeoIPDB_FULL = _GetWatchlist("geoip");
+SecurityEvent
+| where EventID == 4625
+| where IpAddress == "IP HERE"
+| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)
+| order by TimeGenerated desc
+"
+</b>
+<br />
+<br />
+<b>This query will target Security Events, specifically, failed logons using the watchlist we created before. You must input an attacker IP from one of the previous queries. It will correlate attacking ip's with locational data. </b>
 <br />
 <br />
 
